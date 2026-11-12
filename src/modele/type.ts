@@ -1,11 +1,11 @@
 export type TypeDeNode = "progression" | "pnj" | "monstre" | "batiment" | "lieu" | "objet"
-export type TypeDeFiche = Exclude<TypeDeNode, "progression">
+export type TypeOfSheet = Exclude<TypeDeNode, "progression">
 export type TypeDeLien = "suite" | "presence" | "relation"
 export type TypeDeDrapeau = "info" | "relique" | "malediction"
-export type RoleEtape = "depart" | "en cours" | "fin"
+export type StepRole = "depart" | "en cours" | "fin"
 export type Avancement = "brouillon" | "pret"
 
-export interface Couche {
+export interface Layer {
     id: string;
     name: string;
     order: number;
@@ -17,34 +17,34 @@ export interface Drapeau {
     type: TypeDeDrapeau;
 }
 
-export interface EtatFiche {
-    fiche: string,
+export interface SheetStatus {
+    sheet: string,
     status: string;
 }
 
-export interface BaseDeNode {
+export interface NodeBase {
     id: string;
-    titre: string;
+    title: string;
     description: string;
     noteMj: string;
     avancement: Avancement;
 }
 
-export interface Etape extends BaseDeNode {
+export interface Step extends NodeBase {
     type: "progression";
-    couche: string;
-    role: RoleEtape;
+    layer: string;
+    role: StepRole;
     given: string[];
-    changeStatus: EtatFiche[];
+    changeStatus: SheetStatus[];
 }
 
-export interface Fiche extends BaseDeNode {
-    type: TypeDeFiche;
-    statusInitial: string;
-    champs: Record<string, string>;
+export interface Sheet extends NodeBase {
+    type: TypeOfSheet;
+    initialStatus: string;
+    fields: Record<string, string>;
 }
 
-export type Node = Etape | Fiche;
+export type Node = Step | Sheet;
 
 export interface Lien {
     id: string;
@@ -53,7 +53,7 @@ export interface Lien {
     vers: string;
     libelle?: string;
     exigeDrapeau?: String[];
-    exigeStatus: EtatFiche[];
+    exigeStatus: SheetStatus[];
 }
 
 export interface AlerteVoulue {
@@ -61,10 +61,10 @@ export interface AlerteVoulue {
     cible: string;
 }
 
-export interface Campagne {
+export interface Campaign {
     version: number;
-    campagne: string;
-    couches: Couche[];
+    campaign: string;
+    layers: Layer[];
     drapeaux: Drapeau[];
     nodes: Node[];
     liens: Lien[];
