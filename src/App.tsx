@@ -1,6 +1,11 @@
+import HomeScreen from "./screens/HomeScreen"
+import "./index.css";
+
 function App() {
   return (
-    <h1>Cartographe</h1>
+    <div className="home">
+      <HomeScreen/>
+    </div>
   );
 }
 

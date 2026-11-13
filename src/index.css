@@ -2,7 +2,134 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-parchment: #F2EADB;
+  --color-paper: #FAF6EE;
+  --color-paper-warm: #F7F0E3;
+  --color-field: #FFFDF8;
+  --color-ink: #2A221C;
+  --color-ink-muted: #5C4F44;
+  --color-border: #CBB998;
+  --color-border-strong: #A8977B;
+  --color-gold: #A88A4E;
+  --color-blood: #7B2D26;
+  --color-blood-dark: #5A1F1A;
+
+  --font-title: 'Cinzel', Georgia, serif;
+  --font-body: 'Alegreya Sans', 'Segoe UI', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.home-card {
+  max-width: 860px;
+  width: 100%;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  outline: 1px solid var(--color-gold);
+  outline-offset: 6px;
+  border-radius: 4px;
+  padding: 56px 48px;
+}
+
+.home-emblem {
+  stroke: var(--color-blood);
+}
+
+.home-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+}
+
+.home-subtitle {
+  font-size: 19px;
+  color: var(--color-ink-muted);
+}
+
+.home-divider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.home-option {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.home-option--create {
+  background: var(--color-paper-warm);
+}
+
+.home-option-title {
+  font-family: var(--font-title);
+  font-size: 20px;
+  color: var(--color-blood);
+}
+
+.home-option-text {
+  font-size: 16px;
+  color: var(--color-ink-muted);
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.field-input {
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--color-field);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.button-primary {
+  min-height: 46px;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-blood);
+  color: var(--color-paper);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.button-secondary {
+  min-height: 46px;
+  border: 1px solid var(--color-blood);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-blood);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.home-footnote {
+  font-size: 14px;
+  color: var(--color-ink-muted);
 }
