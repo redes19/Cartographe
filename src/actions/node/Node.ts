@@ -1,7 +1,7 @@
 import type { Progress, NodeBase } from "../../modele/types";
 
 
-export function CreateNodeBase(id: string, title: string, description: string, gmNotes: string, progress: Progress): NodeBase {
+export function createNodeBase(id: string, title: string, description: string, gmNotes: string, progress: Progress): NodeBase {
     return {
         id,
         title,
