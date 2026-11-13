@@ -14,7 +14,7 @@ const HomeScreen = () => {
                     <span className="home-subtitle">Le carnet et la carte des tes campagnes</span>
                 </div>
                 <div className="home-divider"></div>
-                <div>
+                <div className="">
                     <div className="home-option home-option--create">
                         <h2>Créer un JDR</h2>
                     </div>
