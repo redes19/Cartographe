@@ -1,5 +1,5 @@
-import type { NodeBase, Sheet, TypeOfSheet } from "../modele/type";
-import { definitionsDesTypes } from '../modele/definitionsDesTypes';
+import type { NodeBase, Sheet, TypeOfSheet } from "../../modele/types";
+import { definitionsDesTypes } from '../../modele/definitionsDesTypes';
 
 
 export function createSheet(nodeBase: NodeBase, type: TypeOfSheet): Sheet {

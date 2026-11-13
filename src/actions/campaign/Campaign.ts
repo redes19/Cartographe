@@ -1,14 +1,14 @@
-import type { Campaign, Layer, Sheet, Step, Node } from "../modele/type";
+import type { Campaign, Layer, Sheet, Step, Node } from "../../modele/types";
 
 export function initializedCampaign(nameOfCampaign : string): Campaign {
     return {
         version: 1,
-        campaign: nameOfCampaign,
+        name: nameOfCampaign,
         layers: [],
-        drapeaux: [],
+        flags: [],
         nodes: [],
-        liens: [],
-        alerteVoulues: [],
+        links: [],
+        intendedAlerts: [],
     }
 }
 
@@ -44,13 +44,18 @@ export function updateNodeInCampaign(campaign: Campaign, updateNode: Node): Camp
     }
 }
 
-export function removeNodeFromCampaign(campaign: Campaign, nodeRemove: Node): Campaign {
+export function removeNodeFromCampaign(campaign: Campaign, nodeId: string): Campaign {
     const updateNode = campaign.nodes.filter((node) => {
-        if(node.id != nodeRemove.id) return node;
+        if(node.id != nodeId) return node;
+    })
+
+    const updateLink = campaign.links.filter((link) => {
+        if(link.from !== nodeId && link.to !== nodeId) return link
     })
 
     return{
         ...campaign,
-        nodes: updateNode
+        nodes: updateNode,
+        links: updateLink,
     }
 }

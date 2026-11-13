@@ -1,9 +1,9 @@
 export type TypeDeNode = "progression" | "pnj" | "monstre" | "batiment" | "lieu" | "objet"
 export type TypeOfSheet = Exclude<TypeDeNode, "progression">
-export type TypeDeLien = "suite" | "presence" | "relation"
-export type TypeDeDrapeau = "info" | "relique" | "malediction"
+export type TypeOfLink = "suite" | "presence" | "relation"
+export type TypeDeFlag = "info" | "relique" | "malediction"
 export type StepRole = "depart" | "en cours" | "fin"
-export type Avancement = "brouillon" | "pret"
+export type Progress = "brouillon" | "pret"
 
 export interface Layer {
     id: string;
@@ -11,10 +11,10 @@ export interface Layer {
     order: number;
 }
 
-export interface Drapeau {
+export interface Flag {
     id: string;
     name: string;
-    type: TypeDeDrapeau;
+    type: TypeDeFlag;
 }
 
 export interface SheetStatus {
@@ -26,8 +26,8 @@ export interface NodeBase {
     id: string;
     title: string;
     description: string;
-    noteMj: string;
-    avancement: Avancement;
+    gmNotes: string;
+    progress: Progress;
 }
 
 export interface Step extends NodeBase {
@@ -46,27 +46,27 @@ export interface Sheet extends NodeBase {
 
 export type Node = Step | Sheet;
 
-export interface Lien {
+export interface Link {
     id: string;
-    type: TypeDeLien;
-    depuis: string;
-    vers: string;
+    type: TypeOfLink;
+    from: string;
+    to: string;
     libelle?: string;
-    exigeDrapeau?: String[];
-    exigeStatus: SheetStatus[];
+    exigeFlag?: String[];
+    exigeStatus?: SheetStatus[];
 }
 
-export interface AlerteVoulue {
+export interface IntendedAlerts {
     analyse: string;
     cible: string;
 }
 
 export interface Campaign {
     version: number;
-    campaign: string;
+    name: string;
     layers: Layer[];
-    drapeaux: Drapeau[];
+    flags: Flag[];
     nodes: Node[];
-    liens: Lien[];
-    alerteVoulues: AlerteVoulue[];
+    links: Link[];
+    intendedAlerts: IntendedAlerts[];
 }
